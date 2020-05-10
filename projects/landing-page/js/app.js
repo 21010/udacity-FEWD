@@ -18,6 +18,7 @@
  * 
 */
 
+// keep data about all sections
 let sectionsData = []
 
 /**
@@ -25,6 +26,8 @@ let sectionsData = []
  * Start Helper Functions
  * 
 */
+
+// get data about each section and update sectionsData variable
 function getSectionsData () {
     let sections = []
     document.querySelectorAll('.main__section')
@@ -38,10 +41,12 @@ function getSectionsData () {
     sectionsData = sections
 }
 
+// get data about active section - data is kept in global variable sectionsData
 function getActiveSectionData () {
     return sectionsData.find(section => section.active)
 }
 
+// update sections (nodes) and set appriopiate classes and update the global state
 function setActiveSection (sectionId) {
     document.querySelectorAll('.main__section')
         .forEach(section => {
@@ -52,6 +57,7 @@ function setActiveSection (sectionId) {
     getSectionsData()
 }
 
+// when navigation link is clicked, update classes of sections and navigation links
 function handleNavLinkClick(event) {
     if (event.target.nodeName !== 'A') return
     const sectionId = event.target.getAttribute('data-section')
@@ -59,6 +65,7 @@ function handleNavLinkClick(event) {
     setActiveNavLink()
 }
 
+// set the class of active link basing on global state
 function setActiveNavLink () {
     const activeSection = getActiveSectionData()
     const sectionId = activeSection !== undefined ? activeSection.sectionId : null
@@ -77,6 +84,8 @@ function setActiveNavLink () {
 */
 
 // build the nav
+
+// generate new li item - an element of navigation
 function generateNavListItem ({ sectionId, anchor, active }) {
     const listItem = document.createElement('li') 
     listItem.appendChild(generateNavLink(sectionId, anchor, active))
@@ -84,6 +93,7 @@ function generateNavListItem ({ sectionId, anchor, active }) {
     return listItem
 }
 
+// generate link which is appended to navigation list element
 function generateNavLink(sectionId, anchor) {
     const navLink = document.createElement('a')
     navLink.href = `#${sectionId}`
@@ -94,6 +104,7 @@ function generateNavLink(sectionId, anchor) {
     return navLink
 }
 
+// generate the navigation list for all sections
 function generateNavList () {
     const list = document.getElementById('navbar__list')
     sectionsData.forEach(section => {
@@ -107,6 +118,7 @@ function generateNavList () {
  * 
 */
 
+// track active sections while the page is being scrolled and update classes
 function setSectionActivationOnScroll () {
     const sections = document.querySelectorAll('.main__section')
     window.addEventListener('scroll', () => {
@@ -120,12 +132,13 @@ function setSectionActivationOnScroll () {
     })
 }
 
+// apply actions which should be triggered when the link is clicked
 function setNavLinkEvents () {
     const nav = document.getElementById('navbar__list')
     nav.addEventListener('click', (event) => handleNavLinkClick(event))
 }
 
-
+// when DOM content is loaded successfully initiate the data, generate navigation and set event listeners
 document.addEventListener('DOMContentLoaded', () => {
     getSectionsData()
     generateNavList()
