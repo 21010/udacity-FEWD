@@ -1,13 +1,15 @@
 # Landing Page Project
 
-## Table of Contents
-
-* [Instructions](#instructions)
-
 ## Instructions
+The "Landing Page" project is a part of Frondend Web Developer Nanodegree provided by Udacity.
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The project uses vanilla JavaSCript to manipulate DOM nodes. It generates navigation links dynamically based on sections (class main__section) on the page.
 
-To get started, open `js/app.js` and start building out the app's functionality
+The page can be accesses directly by opening `index.html` file.
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## How to copy the code?
+You can clone the repository `https://github.com/21010/udacity-FEWD.git` and checkout `landing-page` branch:
+1. `git clone https://github.com/21010/udacity-FEWD.git`
+2. `cd fend`
+3. `git checkout landing-page`
+4. open `index.html` in your favorite web browser (Google Chrome is recommended)
