@@ -86,9 +86,9 @@ function setActiveNavLink () {
 // build the nav
 
 // generate new li item - an element of navigation
-function generateNavListItem ({ sectionId, anchor, active }) {
+function generateNavListItem ({ sectionId, anchor }) {
     const listItem = document.createElement('li') 
-    listItem.appendChild(generateNavLink(sectionId, anchor, active))
+    listItem.appendChild(generateNavLink(sectionId, anchor))
 
     return listItem
 }
@@ -125,7 +125,7 @@ function setSectionActivationOnScroll () {
         let id = null
         sections.forEach(section => {
             let topPosition = section.getBoundingClientRect().top.toFixed(0)
-            if (topPosition <= 100) id = section.id
+            if (topPosition <= 300) id = section.id
         })
         setActiveSection(id)
         setActiveNavLink()
