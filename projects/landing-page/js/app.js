@@ -59,10 +59,14 @@ function setActiveSection (sectionId) {
 
 // when navigation link is clicked, update classes of sections and navigation links
 function handleNavLinkClick(event) {
+    event.preventDefault()
     if (event.target.nodeName !== 'A') return
     const sectionId = event.target.getAttribute('data-section')
     setActiveSection(sectionId)
     setActiveNavLink()
+    document.getElementById(sectionId).scrollIntoView({
+        behavior: 'smooth'
+    })
 }
 
 // set the class of active link basing on global state
