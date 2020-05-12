@@ -62,11 +62,13 @@ function handleNavLinkClick(event) {
     event.preventDefault()
     if (event.target.nodeName !== 'A') return
     const sectionId = event.target.getAttribute('data-section')
-    setActiveSection(sectionId)
-    setActiveNavLink()
-    document.getElementById(sectionId).scrollIntoView({
-        behavior: 'smooth'
-    })
+    setTimeout(() => {
+        setActiveSection(sectionId)
+        setActiveNavLink()
+        document.getElementById(sectionId).scrollIntoView({
+            behavior: 'smooth'
+        })
+    }, 0)
 }
 
 // set the class of active link basing on global state
