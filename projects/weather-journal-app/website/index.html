@@ -18,7 +18,7 @@
         <form class="new-entry-form box">
           <div class="input box">
             <label for="zipCode">your zip code (US only)</label>
-            <input type="number" id="zipCode" name="zipCode" placeholder="enter zip code here">
+            <input type="number" id="zip" name="zipCode" placeholder="enter zip code here">
           </div>
           <div class="textarea box">
             <label for="feelings">How are you feeling today?</label>
@@ -27,18 +27,12 @@
           <button id="generate" type="submit">Generate</button>
         </form>
         <section class="entries box">
-          <div class="entry-box recent box">
-            <h2 class="entry-title">Most recent entry</h2>
-            <div class="entry">
-              <span class="date">11.11.2020</span>
-              <span class="temp">32</span>
-              <span class="content">feeling great!</span>
-            </div>
-          </div>
+          <h2 class="entry-title">Most recent entries</h2>
+          <div class="entries-box"></div>
         </section>
       </main>
       <footer class="page-footer box">
-        Developed by Grzegorz Ziolo | Frontend Wed Developer Nanodegree project @ Udacity
+        Developed by Grzegorz Ziolo | FWDN project | Udacity
       </footer>
     </div>
     <script src="app.js"></script>
