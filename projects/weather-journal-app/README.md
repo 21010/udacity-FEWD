@@ -1,10 +1,13 @@
 # Weather-Journal App Project
 
 ## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+This is one of the final projects created during the Frontend Web Developer Nanodegree program provided by Udacity.
+The goal is to utilize fetch and async functions to create a Weather Journal where the user can add a note which will be recored together with the date and current temperature (OpenWheater API is used here).
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
-
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+## How to install the app
+1. Download or clone the branch `weather-journal-app` from the repository `https://github.com/21010/udacity-FEWD.git`
+    `git clone -b weather-journal-app --single-branch https://github.com/21010/udacity-FEWD.git`
+2. navigate to `weather-journal-app`
+3. install dependencies `npm install` or `yarn install`
+4. run the server `npm start` or `yarn start`
+5. open web browser and go to `http://localhost:3000`
