@@ -2,35 +2,39 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Evaluate News NLP</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
     </head>
     <body>
         <div class="container">
             <header>
-                <div class="">
-                    Logo
-                </div>
-                <div class="">
-                    navigation
-                </div>
+                <h1 class="page-title">Website NLP data</h1>
             </header>
+            <nav class="page-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#hashtags">Hashtags</a></li>
+                </ul>
+            </nav>
             <main>
-                <section>
-                    <form class="" onsubmit="return handleSubmit(event)">
-                        <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                        <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                    </form>
-                <section>
-                <section>
-                    <strong>Form Results:</strong>
-                    <div id="results"></div>
+                <section id="about" class="page-section">
+                    <h2 class="section-header">About</h2>
+                    <p>about goes here</p>
                 </section>
+                <section id="hashtags" class="page-section">
+                    <h2 class="section-header">Hashtags</h2>
+                    <form>
+                        <div class="input">
+                            <label for="url">Enter URL address</label>
+                            <input id="url" type="text" name="url" placeholder="http://example.com">    
+                        </div>
+                    <button type="submit" onclick="return client.handleHashtagsFormSubmit(event)">Submit</button>
+                    </form>
+                    <div>
+                        <h3>Results</h3>
+                        <div id="results"></div>
+                    </div>
+                <section>
             </main>
             <footer>
                 <p>This is a footer</p>
