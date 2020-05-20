@@ -3,10 +3,19 @@ dotenv.config();
 
 const path = require('path')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+
+const { generateError, generateResponse, matchURL } = require('./utils/helpers')
 const textApi = require('./utils/alyien.api')
 
 const app = express()
+
+const port = 3000
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cors())
 
 app.use(express.static('dist'))
 
@@ -15,21 +24,30 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-app.get('/test', (req, res) => {
-    res.send(mockAPIResponse)
+app.use('/api', (req, res, next) => {
+    let error = null
+
+    if (!req.query.url) {
+        error = generateError('url was not provided')
+    } else if (!matchURL(req.query.url)) {
+        error = generateError('url is incorrect')
+    }
+
+    error ? res.status(400).json(error) : next() 
 })
 
-app.get('/hashtags', (req, res) => {
-    console.log(req)
-    // const { url } = req.body
-    // textApi.hashtags(url).then(result => res.send(result))
-})
+app.get('/api/:type', (req, res) => {
+    const { url } = req.query
+    const { type } = req.params
+    
+    if (typeof textApi[type] !== 'function') {
+        return res.status(400).json(generateError('endpoint does not exist')) 
+    }
 
-// aylienApi.summarize('https://en.wikipedia.org')
-//     .then(result => console.log(result))
-//     .catch(error => console.warn(error))
+    textApi[type](url)
+        .then(result => res.json(generateResponse(result)))
+        .catch(error => res.json(generateError(error)))
+})
 
 // designates what port the app will listen to for incoming requests
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000!')
-})
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
