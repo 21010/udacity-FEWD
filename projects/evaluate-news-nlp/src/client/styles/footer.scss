@@ -1,0 +1,9 @@
+@import 'colors';
+
+.page-footer {
+    max-width: 100vw;
+    background: $color-background;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
