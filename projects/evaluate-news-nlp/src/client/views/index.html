@@ -1,43 +1,58 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Evaluate News NLP</title>
     </head>
-
     <body>
-
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
-
-        <main>
-            <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                </form>
-            <section>
-
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-            </section>
-        </main>
-
-        <footer>
-            <p>This is a footer</p>
-        </footer>
-
+        <div class="container">
+            <header class="page-header">
+                <h1 class="page-title">
+                    <a href="/">
+                        <span class="icon">⚛</span> 
+                        <span class="reverse">Eval</span>
+                    </a>
+                </h1>
+            </header>
+            <nav class="page-nav">
+                <ul class="flex-row">
+                    <li><a href="https://docs.aylien.com/" target="_blank">Aylien NLP APIs</a></li>
+                    <li><a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011" target="_blank">FWDN Udacity</a></a></li>
+                </ul>
+            </nav>
+            <main class="page-main">
+                <section class="form page-section">
+                    <form onsubmit="return client.preventFormSubmit(event)">
+                        <div class="input flex-column">
+                            <label for="url">enter URL address</label>
+                            <input id="url" type="text" name="url" placeholder="http://example.com" />    
+                        </div>
+                        <div class="form-options">
+                            <button onclick="return client.handleFormSubmit(event, 'hashtags')">Get Hashtags</button>
+                            <button onclick="return client.handleFormSubmit(event, 'summarize')">Summarize</button>
+                            <a id="results-btn" href="#results-section" class="button hidden">Results</a>
+                        </div>
+                    </form>
+                </section>
+                <section id="results-section" style="display: none;" class="results-box page-section">
+                    <h2 class="section-title">Results</h2>
+                    <div class="results"></div>
+                </section>
+            </main>
+            <footer class="page-footer flew-row">
+                <p>FEWD @ Udacity</p>
+                <button class="small" onclick="return client.scrollTop()">↑</button>
+            </footer>
+        </div>
     </body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(() => console.log('SW registered'))
+                    .catch(() => console.warn('unable to register SW - you can ignore it if working in dev mode'))
+            })
+        }
+    </script>
 </html>
