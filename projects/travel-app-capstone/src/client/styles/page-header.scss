@@ -1,0 +1,24 @@
+@import 'colors';
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: $darkSienna;
+    color: $snow;
+    text-transform: uppercase;
+    box-shadow: 0 0 .5em $rust;
+
+    .page-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .page-logo {
+            padding: 5px;
+            height: 50px;
+            width: auto;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import 'colors';
+
+.page-main {
+    flex: 2;
+    padding: 1em .5em;
+    width: calc(100% - 1em);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}

@@ -1,0 +1,13 @@
+@import 'colors';
+
+.trips {
+    width: 100%;
+
+    .trips-list {
+        list-style: none;
+
+        li {
+            margin: .5em auto;
+        }
+    }
+}

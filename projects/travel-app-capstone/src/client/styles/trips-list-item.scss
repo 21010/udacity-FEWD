@@ -1,0 +1,47 @@
+@import 'colors';
+
+
+.trips-list-item {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    background-color: $white;
+    color: $smokyBlack;
+    box-shadow: 0 0 .1em $rust;
+
+
+    &:hover,
+    &:focus {
+        background-color: $crayola;
+    }
+
+    .trips-list-item-image {
+        width: 96px;
+        height: 96px;
+    }
+
+    .trips-list-item-content {
+        align-self: stretch;
+        width: calc(100% - .5em);
+        padding: .5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .trips-list-item-date {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            dt {
+                margin-right: .5em;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+}
