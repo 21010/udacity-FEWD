@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
     res.send('dist/index.html')
 })
 
+app.use('/api/travels', routes.travels(travelsDB))
 app.use('/api', routes.api)
-app.use('/travels', routes.travels(travelsDB))
 
 app.listen(port, () => console.log(`app is listening on http://localhost:${port}`))
