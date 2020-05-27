@@ -22,6 +22,14 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+            },
+            {
+                test: /\.(png|svg|jpe?g|gif|ico)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'media',
+                }
             }
         ]
     },
