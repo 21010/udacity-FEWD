@@ -14,68 +14,54 @@
                 </h1>
             </header>
             <nav class="page-nav">
-                <ul>
-                    <li><a href="/add">new</a></li>
-                </ul>
+                <button id="new-trip-btn">new</button>
             </nav>
             <main class="page-main">
+                <section class="add-new-trip hidden">
+                    <form>
+                        <div class="location input-box">
+                            <label for="location">Trip to</label>
+                            <input type="text" id="location" name="location" placeholder="enter location" required />
+                        </div>
+                        <div class="time input-box">
+                            <label for="date">date</label>
+                            <input type="date" id="date" name="date" min="2020-06-01" required />
+                        </div>
+                        <button id="submit" disabled>Add</button>
+                    </form>
+                </section>
                 <section class="trips">
                     <ul class="trips-list">
-                        <li>
-                            <a class="trips-list-item" href="/trips/:id">
-                                <div class="trips-list-item-content">
-                                    <h2 class="trips-list-item-title">
-                                        London
-                                    </h2>
-                                    <dl class="trips-list-item-date">
-                                        <dt>Date</dt>
-                                        <dd>14.07.2020</dd>
-                                    </dl>
-                                </div>
-                                <img src="https://source.unsplash.com/96x96/?london" class="trip-list-item-image" />
-                            </a>
-                        </li>
-                        <li>
-                            <a class="trips-list-item" href="/trips/:id">
-                                <div class="trips-list-item-content">
-                                    <h2 class="trips-list-item-title">
-                                        Vancouver
-                                    </h2>
-                                    <dl class="trips-list-item-date">
-                                        <dt>Date</dt>
-                                        <dd>14.07.2020</dd>
-                                    </dl>
-                                </div>
-                                <img src="https://source.unsplash.com/96x96/?vancouver" class="trip-list-item-image" />
-                            </a>
-                        </li>
-                        <li>
-                            <a class="trips-list-item" href="/trips/:id">
-                                <div class="trips-list-item-content">
-                                    <h2 class="trips-list-item-title">
-                                        Paris
-                                    </h2>
-                                    <dl class="trips-list-item-date">
-                                        <dt>Date</dt>
-                                        <dd>14.07.2020</dd>
-                                    </dl>
-                                </div>
-                                <img src="https://source.unsplash.com/96x96/?new+york" class="trip-list-item-image" />
-                            </a>
-                        </li>
-                        <li>
-                            <a class="trips-list-item" href="/trips/:id">
-                                <div class="trips-list-item-content">
-                                    <h2 class="trips-list-item-title">
-                                        New York
-                                    </h2>
-                                    <dl class="trips-list-item-date">
-                                        <dt>Date</dt>
-                                        <dd>14.07.2020</dd>
-                                    </dl>
-                                </div>
-                                <img src="https://source.unsplash.com/96x96/?paris" class="trip-list-item-image" />
-                            </a>
+                        <li class="trips-list-item">
+                            <div class="trips-list-item-content">
+                                <span class="trips-list-item-date">14.07.2020</span>
+                                <hgroup class="trips-list-item-title">
+                                    <h2>London</h2>
+                                    <h3>United Kingdom</h3>
+                                </hgroup>
+                            </div>
+                            <picture class="trips-list-item-image">
+                                <source media="(max-width: 699px)" srcset="https://source.unsplash.com/360x360/?london+landscape">
+                                <source media="(min-width: 700px)" srcset="https://source.unsplash.com/640x640/?london+famous+landscape">
+                                <img src="https://source.unsplash.com/96x96/?london+landscape" loading="lazy">
+                            </picture>
+                            <span class="trips-list-item-details weather">
+                                <dl class="details-temperature">
+                                    <dt>🌡</dt>
+                                    <dd>15</dd>
+                                </dl>
+                                <p class="details-weather">
+                                    most cloudly
+                                </p>
+                            </span>
+                            <span class="trips-list-item-details counter">
+                                <p class="details-counter">
+                                    220 days to this trip!
+                                </p>
+                            </span>
+                            <div class="trips-list-item-menu">
+                                <button class="trips-list-item-remove-btn">remove</button>
+                            </div>
                         </li>
                     </ul>
                 </section>
@@ -85,6 +71,18 @@
             </footer>
         </div>
         <script>
+            let state
+            document.addEventListener('DOMContentLoaded', () => {
+                client.eventListeners()
+                state = client.AppState()
+                client.fetchTrips()
+                    .then(trips => state.setTrips(trips))
+                    .then(() => {
+                        console.log(state)
+                        // render all gathered trips or "trigger addNewTripScreen" if no trips
+                    })
+            })
+
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
                     navigator.serviceWorker.register('/service-worker.js')
