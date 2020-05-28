@@ -41,6 +41,10 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/404.html",
+            filename: "./404.html",
+        }),
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),

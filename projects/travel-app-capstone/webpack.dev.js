@@ -41,6 +41,10 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/404.html",
+            filename: "./404.html",
+        }),
         new CleanWebpackPlugin({
             // Simulate the removal of files
             dry: true,
