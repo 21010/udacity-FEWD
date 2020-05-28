@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Travel App</title>
+        <meta name="description" content="Travel App - Frontend Web Developer Nanodegree capstone project">
+    </head>
+    <body>
+        <div class="container">
+            <header class="page-header">
+                <h1 class="page-title">
+                    <img class="page-logo" src="/media/logo.svg" alt="Travel Planner" />
+                </h1>
+            </header>
+            <nav class="page-nav">
+                <ul>
+                    <li><a href="/">Show My Trips</a></li>
+                </ul>
+            </nav>
+            <main class="page-main">
+                <p>404 oops... page not found</p>
+            </main>
+            <footer class="page-footer">
+                <p>FEWD capstone project</p>
+            </footer>
+        </div>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(() => console.log('SW registered'))
+                        .catch(() => console.warn('SW registration failed. Are you using dev mode?'))
+                })
+            }
+        </script>
+    </body>
+</html>
