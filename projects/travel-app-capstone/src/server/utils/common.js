@@ -11,6 +11,14 @@ function getPhotoSize (size) {
     }
 }
 
+function daysTillDate(date) {
+    const givenDate = new Date(date)
+    const now = new Date()
+    const day = 1000 * 60 * 60 * 24
+    return Math.round((givenDate - now) / day)
+}
+
 module.exports = {
-    getPhotoSize
+    getPhotoSize,
+    daysTillDate,
 }
