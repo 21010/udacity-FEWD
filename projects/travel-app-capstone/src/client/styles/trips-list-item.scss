@@ -1,47 +1,126 @@
 @import 'colors';
 
+// $crayola: #F2F3AE;
+// $bronze: #D58936;
+// $rust: #A44200;
+// $bloodRed: #69140E;
+// $darkSienna: #3C1518;
+// $black: #252627;
+// $white: #F2EFE9;
+// $cordovan: #904E55;
+// $claret: #7B0828;
+// $smokyBlack: #0f0e0e;
+// $darkBizantinium: #522B47;
+// $morningBlue: #8DAA9D;
+// $snow: #FBF5F3;
 
 .trips-list-item {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    text-decoration: none;
-    background-color: $white;
+    background-color: #fff;
     color: $smokyBlack;
     box-shadow: 0 0 .1em $rust;
 
-
     &:hover,
     &:focus {
-        background-color: $crayola;
+        box-shadow: 0 0 .2em $black;
     }
 
     .trips-list-item-image {
-        width: 96px;
-        height: 96px;
+        width: calc(100% - 1em);
+        height: auto;
+    }
+
+    .trips-list-item-image img {
+        width: 100%;
+        height: auto;
     }
 
     .trips-list-item-content {
         align-self: stretch;
-        width: calc(100% - .5em);
-        padding: .5em;
+        width: calc(100% - 1em);
+        padding: 0 .5em .5em .5em;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
-        .trips-list-item-date {
-            width: 100%;
+        .trips-list-item-title {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-
-            dt {
-                margin-right: .5em;
-                text-transform: uppercase;
+            
+            h2 {
+                font-size: 2em;
             }
+
+            h3 {
+                font-size: 1.4em;
+            }
+        }
+
+        .trips-list-item-date {
+            width: 100%;
+            background-color: $black;
+            padding: .3em 0;
+            margin: .5em auto;
+            color: $white;
+            font-size: 1.2em;
+            text-align: center;
         }
     }
 
+    .trips-list-item-details {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        dl {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .5em 0;
+
+            dt {
+                margin-right: .5em;
+            }
+        }
+
+        .details-temperature {
+            
+            dt {
+                font-size: 1.5em;
+                margin: 0;
+            }
+
+            dd {
+                background-color: $white;
+                color: $black;
+                font-weight: bold;
+                padding: .5em .6em;
+                border-radius: 50%;
+            }
+        }
+
+        &.counter {
+            padding: .5em 0;
+            background-color: $black;
+            color: $crayola;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+    }
+
+
+    .trips-list-item-menu {
+        button {
+            border: none;
+            box-shadow: none;
+            font-size: 1em;
+        }
+    }
 }

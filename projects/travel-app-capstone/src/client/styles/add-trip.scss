@@ -1,0 +1,82 @@
+@import 'colors';
+
+// $crayola: #F2F3AE;
+// $bronze: #D58936;
+// $rust: #A44200;
+// $bloodRed: #69140E;
+// $darkSienna: #3C1518;
+// $black: #252627;
+// $white: #F2EFE9;
+// $cordovan: #904E55;
+// $claret: #7B0828;
+// $smokyBlack: #0f0e0e;
+// $darkBizantinium: #522B47;
+// $morningBlue: #8DAA9D;
+// $snow: #FBF5F3;
+
+.add-new-trip {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: $claret;
+    color: $snow;
+    box-shadow: 0 0 .4em $black;
+
+    button {
+        background-color: $bronze;
+        display: flex;
+        padding-left: 4em;
+        padding-right: 4em;
+        margin-top: 2em;
+
+        &:before {
+            content: "+";
+            font-size: 1.2em;
+            margin-right: .5em;
+        }
+        
+        &:hover,
+        &:focus {
+            background-color: $black;
+            box-shadow: 0 0 .4em $morningBlue;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: stretch;
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: .5em auto;
+
+            label {
+            }
+
+            input {
+                flex: 2;
+                margin-left: 1em;
+                margin-right: 1em;
+
+                &:focus {
+                    background-color: $morningBlue;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .add-new-trip {
+        height: auto;
+        padding: 2em 0;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}

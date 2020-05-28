@@ -7,8 +7,8 @@
 
 html,
 body {
-    background-color: $snow;
-    color: $smokyBlack;
+    background-color: $black;
+    color: $snow;
     width: 100%;
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -27,6 +27,7 @@ a {
 
 .button,
 button {
+    cursor: pointer;
     padding: 0 1.2em;
     margin: .1em;
     line-height: 48px;
@@ -42,9 +43,36 @@ button {
 
     &:hover,
     &:focus {
-        background-color: $claret;
+        background-color: $black;
+        box-shadow: 0 0 .4em $morningBlue;
         color: $snow;
     }
+}
+
+label {
+    line-height: 48px;
+    font-size: 1em;
+    padding: 0 1em;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+input[type=text],
+input[type=date] {
+    padding: 0 1.2em;
+    line-height: 48px;
+    box-shadow: 0 0 .3em $rust;
+    border: 1px solid $claret;
+    font-size: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.disable-scrolling {
+    height: 100%;
+    overflow: hidden;
 }
 
 .container {
@@ -57,4 +85,13 @@ button {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+    box-shadow: 0 0 .2em $black;
+    background-color: $snow;
+    color: $smokyBlack;
+}
+
+@media screen and (min-width: 700px) {
+    .container {
+        min-height: 100vh;
+    }
 }
