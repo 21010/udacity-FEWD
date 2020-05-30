@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     background-color: #fff;
     color: $smokyBlack;
     box-shadow: 0 0 .1em $rust;
@@ -29,16 +29,18 @@
     }
 
     .trips-list-item-image {
+        flex: 2;
         width: calc(100% - 1em);
         height: auto;
     }
 
     .trips-list-item-image img {
         width: 100%;
-        height: auto;
+        height: 200px;
+        overflow: hidden;
     }
 
-    .trips-list-item-content {
+    .trips-list-item-header {
         align-self: stretch;
         width: calc(100% - 1em);
         padding: 0 .5em .5em .5em;
@@ -90,19 +92,31 @@
             }
         }
 
-        .details-temperature {
-            
-            dt {
-                font-size: 1.5em;
-                margin: 0;
+        &.weather {
+            .details-temperature {
+                dt {
+                    font-size: 1.5em;
+                    margin: 0;
+                }
+    
+                dd {
+                    background-color: $white;
+                    color: $black;
+                    font-weight: bold;
+                    padding: .5em .6em;
+                    border-radius: 50%;
+                }
             }
 
-            dd {
-                background-color: $white;
-                color: $black;
-                font-weight: bold;
-                padding: .5em .6em;
-                border-radius: 50%;
+            .details-weather {
+                display: flex;
+                line-height: 2em;
+                text-transform: lowercase;
+
+                img {
+                    height: 2em;
+                    margin-right: .5em;
+                }
             }
         }
 
