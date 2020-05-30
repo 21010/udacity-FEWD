@@ -1,6 +1,7 @@
 const geonames = require('./geonames.api')
 const weatherbit = require('./weatherbit.api')
 const pixabay = require('./pixabay.api')
+const unsplash = require('./unsplash.api')
 const { daysTillDate } = require('./common')
 
 function createBundle (location, date) {
@@ -12,19 +13,22 @@ function createBundle (location, date) {
     return geonames.get(location)
         .then(data => {
             bundle = { ...bundle, ...data[0] }
-            // return { lat: data[0].lat, lng: data[0].lng }
         })
         .then(() => weatherbit.getWeatherByLatLon(bundle.lat, bundle.lng))
         .then(forecast => {
             bundle = { ...bundle, forecast }
         })
-        .then(() => weatherbit.getCurrentWeatherByCityName(bundle.name))
+        .then(() => weatherbit.getCurrentWeatherByLatLon(bundle.lat, bundle.lng))
         .then(weather => {
             bundle = { ...bundle, weather }
         })
         .then(() => pixabay.getPhotos(location))
-        .then(photos => {
-            bundle = { ...bundle, photos }
+        .then(pixabayPhotos => {
+            const fallBackPhotos = unsplash.getPhotos(`${bundle.countryName}+holidays`)
+            bundle = {
+                ...bundle,
+                photos: pixabayPhotos ? pixabayPhotos : fallBackPhotos
+            }
         })
         .then(() => {
             return bundle
