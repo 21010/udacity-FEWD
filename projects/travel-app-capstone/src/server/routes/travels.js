@@ -22,7 +22,7 @@ module.exports = (travels) => {
             .catch(error => console.warn(error))
     })
 
-    router.post('/remove/:id', (req, res) => {
+    router.get('/remove/:id', (req, res) => {
         const { id } = req.params
         res.json(travels.remove(id))
     })
