@@ -2,10 +2,12 @@ const fetch = require('node-fetch')
 
 const key = process.env.WEATHERBIT_KEY
 
-// https://api.weatherbit.io/v2.0/current?city=Tarnobrzeg&key=43fcc3cca85746009d15d1b6ad292f84
+function generateIconLink(code) {
+    return `https://www.weatherbit.io/static/img/icons/${code}.png`
+}
 
 function getCurrentWeatherByCityName (cityName) {
-    return fetch(`https://api.weatherbit.io/v2.0/current?city=${cityName}&key=${key}`)
+    return fetch(`https://api.weatherbit.io/v2.0/current?city=${encodeURIComponent(cityName)}&key=${key}`)
         .then(response => response.json())
         .then(weather => {
             return {
@@ -14,7 +16,7 @@ function getCurrentWeatherByCityName (cityName) {
                 windDir: weather.data["0"].wind_cdir_full,
                 temperature: weather.data["0"].temp,
                 humidity: weather.data["0"].rh,
-                icon: weather.data["0"].weather.icon,
+                icon: generateIconLink(weather.data["0"].weather.icon),
                 description: weather.data["0"].weather.description,
             }
         })
@@ -30,7 +32,7 @@ function getCurrentWeatherByLatLon (lat, lon) {
                 windDir: weather.data["0"].wind_cdir_full,
                 temperature: weather.data["0"].temp,
                 humidity: weather.data["0"].rh,
-                icon: weather.data["0"].weather.icon,
+                icon: generateIconLink(weather.data["0"].weather.icon),
                 description: weather.data["0"].weather.description,
             }
         })
@@ -48,7 +50,7 @@ function getWeatherByCityName (cityName) {
                     windDir: day.wind_cdir_Full,
                     temperature: day.temp,
                     humidity: day.rh,
-                    icon: day.weather.icon,
+                    icon: generateIconLink(day.weather.icon),
                     description: day.weather.description,
                 }
                 
@@ -69,7 +71,7 @@ function getWeatherByLatLon (lat, lon) {
                         windDir: day.wind_cdir_Full,
                         temperature: day.temp,
                         humidity: day.rh,
-                        icon: day.weather.icon,
+                        icon: generateIconLink(day.weather.icon),
                         description: day.weather.description,
                     }
                     
