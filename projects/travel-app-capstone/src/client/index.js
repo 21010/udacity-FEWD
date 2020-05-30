@@ -1,8 +1,11 @@
-import { handleMenuButton, resetEvent } from './js/menuButton'
-import { handleFormInputs, handleFormSubmit } from './js/addTripForm'
+import { toggleMenu, resetEvent, hideNavButtons } from './js/navActions'
+import { handleFormInputs, handleFormSubmit } from './js/formActions'
 import { eventListeners } from './js/eventListeners'
 import AppState from './js/AppState'
-import { fetchTrips } from './js/fetchTrips'
+import { fetchTrips, postTrip } from './js/fetchTrips'
+import { renderListItem } from './js/renderTripSection'
+import { getPhotos, getWeatherData, getCurrentDate, focusOnField, removeListItem } from './js/common'
+import { validateData } from './js/formValidator'
 
 // import SASS files
 import './styles/base.scss'
@@ -19,11 +22,20 @@ import logo from './media/logo.svg'
 
 // export library
 export {
-    handleMenuButton,
+    toggleMenu,
     resetEvent,
+    focusOnField,
+    removeListItem,
     handleFormInputs,
     handleFormSubmit,
     eventListeners,
     fetchTrips,
+    postTrip,
+    renderListItem,
+    getCurrentDate,
+    getPhotos,
+    getWeatherData,
+    validateData,
+    hideNavButtons,
     AppState,
 }
