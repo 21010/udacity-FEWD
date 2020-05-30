@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Travel App</title>
         <meta name="description" content="Travel App - Frontend Web Developer Nanodegree capstone project">
+        <script>let state</script>
     </head>
     <body>
         <div class="container">
@@ -14,7 +15,7 @@
                 </h1>
             </header>
             <nav class="page-nav">
-                <button id="new-trip-btn">new</button>
+                <button id="new-trip-btn" style="display: none">new</button>
             </nav>
             <main class="page-main">
                 <section class="add-new-trip hidden">
@@ -31,56 +32,16 @@
                     </form>
                 </section>
                 <section class="trips">
-                    <ul class="trips-list">
-                        <li class="trips-list-item">
-                            <div class="trips-list-item-content">
-                                <span class="trips-list-item-date">14.07.2020</span>
-                                <hgroup class="trips-list-item-title">
-                                    <h2>London</h2>
-                                    <h3>United Kingdom</h3>
-                                </hgroup>
-                            </div>
-                            <picture class="trips-list-item-image">
-                                <source media="(max-width: 699px)" srcset="https://source.unsplash.com/360x360/?london+landscape">
-                                <source media="(min-width: 700px)" srcset="https://source.unsplash.com/640x640/?london+famous+landscape">
-                                <img src="https://source.unsplash.com/96x96/?london+landscape" loading="lazy">
-                            </picture>
-                            <span class="trips-list-item-details weather">
-                                <dl class="details-temperature">
-                                    <dt>🌡</dt>
-                                    <dd>15</dd>
-                                </dl>
-                                <p class="details-weather">
-                                    most cloudly
-                                </p>
-                            </span>
-                            <span class="trips-list-item-details counter">
-                                <p class="details-counter">
-                                    220 days to this trip!
-                                </p>
-                            </span>
-                            <div class="trips-list-item-menu">
-                                <button class="trips-list-item-remove-btn">remove</button>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul class="trips-list"></ul>
                 </section>
             </main>
             <footer class="page-footer">
-                <p>FEWD capstone project</p>
+                <p>FEWD Capstone Project</p>
             </footer>
         </div>
         <script>
-            let state
             document.addEventListener('DOMContentLoaded', () => {
                 client.eventListeners()
-                state = client.AppState()
-                client.fetchTrips()
-                    .then(trips => state.setTrips(trips))
-                    .then(() => {
-                        console.log(state)
-                        // render all gathered trips or "trigger addNewTripScreen" if no trips
-                    })
             })
 
             if ('serviceWorker' in navigator) {
