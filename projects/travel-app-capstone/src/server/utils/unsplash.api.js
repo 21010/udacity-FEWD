@@ -11,6 +11,17 @@ function getPhoto (keyword, size) {
 }
 
 /** 
+ * The function generates an object with 3 images (links): small, medium, large
+*/
+function getPhotos (keyword) {
+    return [{
+        small: getPhoto(keyword, 'small'),
+        medium: getPhoto(keyword, 'medium'),
+        large: getPhoto(keyword, 'large')
+    }]
+}
+
+/** 
  * The function takes a keyword (string), width (integer) and height (integer)
  * and returns the URI to photo hosted by unsplash - API endpoint which returns the image
 */
@@ -23,5 +34,6 @@ function getCustomPhoto (keyword, width, height) {
 
 module.exports = {
     getPhoto,
+    getPhotos,
     getCustomPhoto,
 }
