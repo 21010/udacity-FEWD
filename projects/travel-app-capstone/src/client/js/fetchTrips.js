@@ -3,3 +3,19 @@ export function fetchTrips () {
         .then(response => response.json())
         .catch(error => console.warn(error))
 }
+
+export function postTrip (location, date) {
+    return fetch('//localhost:3000/api/travels/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ location, date })
+    })
+        .then(response => response.json())
+        .catch(error => console.warn(error))
+}
+
+export function removeTrip (id) {
+    return fetch(`//localhost:3000/api/travels/remove/${id}`)
+        .then(response => response.json())
+        .catch(error => console.warn(error))
+}
