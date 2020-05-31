@@ -15,6 +15,8 @@ module.exports = (travels) => {
 
     router.post('/add', (req, res) => {
         const { location, date } = req.body
+        if (!location || !date) return res.status(400).json({})
+
         createBundle(location, date)
             .then(bundle => {
                 res.json(travels.add(bundle))
