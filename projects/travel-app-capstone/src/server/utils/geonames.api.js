@@ -3,9 +3,12 @@ const username = process.env.GEONAMES_USER
 
 function get (cityName) {
     return fetch(`http://api.geonames.org/searchJSON?maxRows=10&q=${cityName}&username=${username}`)
-        .then(response => response.json())
+        .then(response => {
+            if (response.status !== 200) return false
+            return response.json()
+        })
         .then(data => {
-            if (data.totalResultsCount = 0) return false
+            if (data.totalResultsCount === 0) return false
             return data.geonames.map(row => {
                 return {
                     name: row.name,

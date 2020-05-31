@@ -10,7 +10,10 @@ export function postTrip (location, date) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ location, date })
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status !== 200) return alert('oops')
+            return response.json()
+        })
         .catch(error => console.warn(error))
 }
 

@@ -1,8 +1,12 @@
 const fetch = require('node-fetch')
 
 function getCountryByName (name) {
-    return fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`)
-    .then(response => response.json())
+    const query = encodeURIComponent(name)
+    return fetch(`https://restcountries.eu/rest/v2/name/${query}?fullText=true`)
+    .then(response => {
+        if (response.status !== 200) return false
+        return response.json()
+    })
     .then(data => {
         if (data.status && data.status === 404) return false
         return data[0]
@@ -11,8 +15,12 @@ function getCountryByName (name) {
 }
 
 function getCountryByCode (code) {
-    return fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)
-    .then(response => response.json())
+    const query = encodeURIComponent(code)
+    return fetch(`https://restcountries.eu/rest/v2/alpha/${query}`)
+    .then(response => {
+        if (response.status !== 200) return false
+        return response.json()
+    })
     .then(data => {
         if (data.status && data.status === 404) return false
         return data

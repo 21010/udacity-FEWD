@@ -5,7 +5,10 @@ const key = process.env.PIXABAY_KEY
 function getPhotos (keyword) {
     const query = encodeURIComponent(keyword)
     return fetch(`https://pixabay.com/api/?key=${key}&q=${query}&image_type=photo`)
-        .then(response => response.json())
+        .then(response => {
+            if (response.status !== 200) return false
+            return response.json()
+        })
         .then(data => {
             if (parseInt(data.totalHits) === 0) return false
 

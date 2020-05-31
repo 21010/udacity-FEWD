@@ -7,8 +7,12 @@ function generateIconLink(code) {
 }
 
 function getCurrentWeatherByCityName (cityName) {
-    return fetch(`https://api.weatherbit.io/v2.0/current?city=${encodeURIComponent(cityName)}&key=${key}`)
-        .then(response => response.json())
+    const query = encodeURIComponent(cityName)
+    return fetch(`https://api.weatherbit.io/v2.0/current?city=${query}&key=${key}`)
+        .then(response => {
+            if (response.status !== 200) return false
+            return response.json()
+        })
         .then(weather => {
             return {
                 pressure: weather.data["0"].pres,
@@ -24,7 +28,10 @@ function getCurrentWeatherByCityName (cityName) {
 
 function getCurrentWeatherByLatLon (lat, lon) {
     return fetch(`https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=${key}`)
-        .then(response => response.json())
+        .then(response => {
+            if (response.status !== 200) return false
+            return response.json()
+        })
         .then(weather => {
             return {
                 pressure: weather.data["0"].pres,
@@ -39,8 +46,12 @@ function getCurrentWeatherByLatLon (lat, lon) {
 }
 
 function getWeatherByCityName (cityName) {
-    return fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${cityName}&key=${key}`)
-    .then(response => response.json())
+    const query = encodeURIComponent(cityName)
+    return fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${query}&key=${key}`)
+    .then(response => {
+        if (response.status !== 200) return false
+        return response.json()
+    })
     .then(weather => {
         return weather.data.map(day => {
             return {
@@ -61,7 +72,10 @@ function getWeatherByCityName (cityName) {
 
 function getWeatherByLatLon (lat, lon) {
     return fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${key}`)
-        .then(response => response.json())
+        .then(response => {
+            if (response.status !== 200) return false
+            return response.json()
+        })
         .then(weather => {
             return weather.data.map(day => {
                 return {
